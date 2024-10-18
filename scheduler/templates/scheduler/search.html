@@ -1,0 +1,10 @@
+{% extends "scheduler/layout.html" %}
+
+{%block body%}
+<form method="post" action="{% url 'search' %}">
+    {% csrf_token %}
+    <input type="text" name="q" placeholder="Search..." value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+{% endblock %}
