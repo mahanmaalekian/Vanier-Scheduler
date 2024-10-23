@@ -1,0 +1,49 @@
+{% extends "scheduler/layout.html" %}
+{% load static %}
+
+{%block body%}
+{% if exams %}
+    <div id = "calendar-body" class="table-responsive" style="height: 800px; overflow-y: auto;  overflow-x: auto;">
+        <table class="table table-striped-columns table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Course ID</th>
+                <th scope="col">Section ID</th>
+                <th scope="col">Description</th>
+                <th scope="col">Teacher</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
+                <th scope="col">Room Number</th>
+                <th scope="col">Row</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for exam in exams %}
+                <tr id="{{exam.course_id}} {{exam.section_id}}">
+                    <td>{{ exam.date }}</td>
+                    <td>{{ exam.course_id }}</td>
+                    <td>{{ exam.section_id }}</td>
+                    <td>{{ exam.description }}</td>
+                    <td>{{ exam.teacher}}</td>
+                    <td>{{ exam.start_time }}</td>
+                    <td>{{ exam.end_time}}</td>
+                    <td>{{ exam.room_number}}</td>
+                    <td>{{ exam.row|default_if_none:""}}</td>
+                    <td><button id="{{exam.course_id}} {{exam.section_id}}" onclick="removeFromCalendar('{{exam.course_id}} {{exam.section_id}}')">Remove</button>
+                    <button onclick="addToGoogleCalendar(this)">Google</button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        <button onclick="createDownloadICSFile()">ICS</button>
+    </div>
+{% else %}
+    <p>Calendar is empty</p>
+{% endif %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'scheduler/calendar.js' %}"></script>
+{% endblock %}

@@ -20,3 +20,15 @@ class Exam(models.Model):
     def __str__(self):
         return f"{self.description}: sections {self.section_id}"
         
+    def to_dict(self):
+        return {
+            "date": str(self.date),
+            "course_id": str(self.course_id),
+            "section_id": str(self.section_id),
+            "description": str(self.description),
+            "teacher": str(self.teacher),
+            "start_time": str(self.start_time),
+            "end_time": str(self.end_time),
+            "room_number": str(self.room_number),
+            "row": str(self.row) if self.row != None else ""
+        }
