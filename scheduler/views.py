@@ -24,16 +24,9 @@ def search(request):
      if query:
           queried=True
           query = query.upper()
-          if query in courses:
-               exam = Exam.objects.filter(course_id = query)
-               exam_list = list(exam.values())
-               print(exam_list)
-               exams.append(exam)
-               print(exams)
-          else:
-               exams = Exam.objects.filter(course_id__icontains=query)
-               exam_list = list(exams.values())
-               print(exam_list)
+          exams = Exam.objects.filter(course_id__icontains=query)
+          exam_list = list(exams.values())
+          print(exam_list)
      print(exams)
      return render(request, "scheduler/search.html", {
           "exams": exams,

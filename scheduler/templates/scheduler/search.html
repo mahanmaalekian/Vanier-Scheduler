@@ -2,15 +2,17 @@
 {% load static %}
 
 {%block body%}
+<section class="home">
+<h1>hello</h1>
 <form id="searchForm" method="post" action="{% url 'search' %}">
     {% csrf_token %}
     <input type="text" name="q" required placeholder="Search..." value="{{ query }}">
-    <button type="submit">Search</button>
+    <button class="btn" type="submit">Search</button>
 </form>
 {% if queried %}
     {% if exams %}
-        <div class="table-responsive" style="height: 800px; overflow-y: auto;  overflow-x: auto;">
-            <table class="table table-striped-columns table-hover">
+        <div class="">
+            <table class="">
                 <thead>
                 <tr>
                     <th scope="col">Date</th>
@@ -47,6 +49,7 @@
         <p>No exams found</p>
     {% endif %}
 {% endif %}
+</section>
 {% endblock %}
 
 {% block script %}

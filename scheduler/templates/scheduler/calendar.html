@@ -3,8 +3,9 @@
 
 {%block body%}
 {% if exams %}
-    <div id = "calendar-body" class="table-responsive" style="height: 800px; overflow-y: auto;  overflow-x: auto;">
-        <table class="table table-striped-columns table-hover">
+<section class="home">
+    <div id = "calendar-body">
+        <table class="">
             <thead>
             <tr>
                 <th scope="col">Date</th>
@@ -42,6 +43,8 @@
 {% else %}
     <p>Calendar is empty</p>
 {% endif %}
+
+</section>
 {% endblock %}
 
 {% block script %}
