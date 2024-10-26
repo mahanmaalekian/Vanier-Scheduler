@@ -5,6 +5,7 @@ urlpatterns = [
      path("", views.index, name="index"),
      path("search/", views.search, name="search"),
      path("calendar/", views.calendar, name="calendar"),
+     path("contact/", views.contact, name="contact"),
 
      #API Routes
      path("add_to_calendar", views.add_to_calendar, name="add_to_calendar"),

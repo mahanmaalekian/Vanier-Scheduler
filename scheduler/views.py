@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from .models import *
 from django.views.decorators.csrf import csrf_exempt
-import logging
+from django.db.models import Q
 
 
  # Create your views here.
@@ -23,7 +23,7 @@ def search(request):
      if query:
           queried=True
           query = query.upper()
-          exams = Exam.objects.filter(course_id__icontains=query)
+          exams = Exam.objects.filter(Q(course_id__icontains=query) | Q(description__icontains=query))
           exam_list = list(exams.values())
           print(exam_list)
      print(exams)
@@ -37,7 +37,9 @@ def calendar(request):
           "exams": request.session["exams"],
      })
 
-@csrf_exempt
+def contact(request):
+     return render(request, "scheduler/contact.html")
+
 def add_to_calendar(request):
      print("hi")
 
@@ -68,7 +70,6 @@ def add_to_calendar(request):
 
 
 
-@csrf_exempt
 def remove_from_calendar(request):
      print("in remove")
      if request.method != "DELETE":
