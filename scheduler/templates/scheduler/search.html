@@ -3,16 +3,21 @@
 
 {%block body%}
 <section class="home">
-<h1>hello</h1>
-<form id="searchForm" method="post" action="{% url 'search' %}">
-    {% csrf_token %}
-    <input type="text" name="q" required placeholder="Search..." value="{{ query }}">
-    <button class="btn" type="submit">Search</button>
-</form>
-{% if queried %}
+<div class="home-content">
+
+<br>
+{% if not queried %}
+<h1>Search</h1>
+<p>Find your exam schedule by entering the course code (e.g. ECSE 200). 
+Feel free to search more broadly using the relevant code for your faculty if needed!</p>
+<p>To add an exam to your calendar, simply click the button. 
+Once you are done, go to the Calendar section and export your personalized schedule!
+</p>
+{% else %}
+<h1>Results</h1>
     {% if exams %}
-        <div class="">
-            <table class="">
+        <div class="table-container ">
+            <table>
                 <thead>
                 <tr>
                     <th scope="col">Date</th>
@@ -39,7 +44,7 @@
                         <td>{{ exam.end_time}} </td>
                         <td>{{ exam.room_number}} </td>
                         <td>{{ exam.row|default_if_none:""}} </td>
-                        <td><button id="{{exam.course_id}} {{exam.section_id}}" onclick="addToCalendar('{{exam.course_id}} {{exam.section_id}}')">Add To Calendar</button></td>
+                        <td><button class="btn btn-calendar" id="{{exam.course_id}} {{exam.section_id}}" onclick="addToCalendar('{{exam.course_id}} {{exam.section_id}}')">Add To Calendar</button></td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -49,6 +54,14 @@
         <p>No exams found</p>
     {% endif %}
 {% endif %}
+<form id="searchForm" method="post" action="{% url 'search' %}">
+    {% csrf_token %}
+    <input class="search-bar" type="text" name="q" required placeholder="Search for exam..." value="{{ query }}">
+    <button class="btn btn-search" type="submit">    <i class="fas fa-search"></i>
+    </button>
+</form>
+<a class="btn" href="{% url 'calendar' %}">Go to Calendar</a>
+    </div>
 </section>
 {% endblock %}
 

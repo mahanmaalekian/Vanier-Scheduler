@@ -2,9 +2,14 @@
 {% load static %}
 
 {%block body%}
-{% if exams %}
 <section class="home">
-    <div id = "calendar-body">
+<div class="home-content">
+<h1>Calendar</h1>
+
+
+{% if exams %}
+<div id="calendar-body">
+    <div class="table-container">
         <table class="">
             <thead>
             <tr>
@@ -32,18 +37,22 @@
                     <td>{{ exam.end_time}}</td>
                     <td>{{ exam.room_number}}</td>
                     <td>{{ exam.row|default_if_none:""}}</td>
-                    <td><button id="{{exam.course_id}} {{exam.section_id}}" onclick="removeFromCalendar('{{exam.course_id}} {{exam.section_id}}')">Remove</button>
-                    <button onclick="addToGoogleCalendar(this)">Google</button></td>
+                    <td class="action-buttons-container"><button class="btn btn-remove" id="{{exam.course_id}} {{exam.section_id}}" onclick="removeFromCalendar('{{exam.course_id}} {{exam.section_id}}')">Remove</button>
+                    <button class="btn" onclick="addToGoogleCalendar(this)"><i class="fa-brands fa-google"></i></button></td>
                 </tr>
             {% endfor %}
         </tbody>
         </table>
-        <button onclick="createDownloadICSFile()">ICS</button>
+
     </div>
+    <button id="btn-download" class= "btn btn-download" onclick="createDownloadICSFile()">Export Cal <i class="fa-solid fa-download"></i></button>
+</div>
+
 {% else %}
     <p>Calendar is empty</p>
 {% endif %}
 
+</div>
 </section>
 {% endblock %}
 

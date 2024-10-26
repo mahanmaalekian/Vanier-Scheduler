@@ -18,19 +18,17 @@ body{
     width: 100%;
     height: 100vh;
     overflow-x: hidden;
-    background-color: black;
     color: white;
-
 }
 
 
 nav {
+    background-color: transparent;
     overflow: hidden;
     position: fixed;
     top: 0;
     left: 0;
     padding: 1rem 9%;
-    background-color: rgb(12, 12, 12);
     width: 100%;
     filter: drop-shadow(10px);
     display: flex;
@@ -42,12 +40,72 @@ nav .icon{
     display: none;
 }
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 1.2rem;
+    border: solid #CC3333;
+}
+
+.table-container {
+    max-height: 40rem;
+    height: auto;
+    overflow-y: auto;
+    margin: 2rem;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+thead{
+    background-color: rgb(92, 91, 91);
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+tbody tr:hover {
+    background-color: gray;
+}
+tbody tr:nth-child(even):hover {
+    background-color: gray;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(44, 44, 44);
+}
+
 .logo{
     font-size: 3rem;
-    color: red;
+    color: #CC3333;
     font-weight: 800;
     cursor: pointer;
     transition: 0.5s ease;
+}
+.logo img {
+    width: 15rem;
+    height: auto;
+    margin-top: 1rem;
 }
 
 .logo:hover{
@@ -67,8 +125,8 @@ nav a{
 }
 nav a:hover,
 nav a:active{
-    color: red;
-    border-bottom: 3px solid red;
+    color: #CC3333;
+    border-bottom: 3px solid #CC3333;
 }
 
 
@@ -86,6 +144,8 @@ nav a:active{
         width: 100%;
         text-align:right;
         position: relative;
+        background-color: rgb(12, 12, 12);
+
     }
 
     nav a:not(:first-child) {display: none;}
@@ -127,7 +187,7 @@ nav a:active{
     nav a.active{
         padding: 1rem;
         border-radius: 0.5rem;
-        border-bottom: 0.5 rem solid red;
+        border-bottom: 0.5 rem solid #CC3333;
     }
     
     section.home{
@@ -147,17 +207,22 @@ section{
     justify-content: center;
     align-items: center;
     gap: 8rem;
-    background-color: black;
+    background-image: linear-gradient(to bottom right, rgb(26, 24, 24), black);
+}
+
+.home-content {
+    width: 100%;
 }
 
 .home .home-content h1{
-    font-size:6rem;
+    font-size:5rem;
     line-height: 1.3;
     font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 span{
-    color: red;
+    color: #CC3333;
 }
 
 .home-content h3{
@@ -168,6 +233,7 @@ span{
 
 .home-content p{
     font-size: 1.6rem;
+    max-width: 80rem;
 }
 
 .home-img{
@@ -178,7 +244,7 @@ span{
     position: relative;
     width: 32vw;
     border-radius: 50%;
-    box-shadow: 0 0 25px solid red;
+    box-shadow: 0 0 25px solid #CC3333;
     cursor: pointer;
     transition: 0.2s linear;
 }
@@ -195,7 +261,7 @@ span{
     width: 4rem;
     height: 4rem;
     background-color: transparent;
-    border: 0.2rem solid red;
+    border: 0.2rem solid #CC3333;
     font-size: 2rem;
     border-radius: 50%;
     margin: 3rem 1.5rem 3rem 0;
@@ -207,8 +273,8 @@ span{
 .social-icons a:hover{
     color: black;
     transform: scale(1.3) translateY(-5px);
-    background-color: red;
-    box-shadow: 0 0 25px  red;
+    background-color: #CC3333;
+    box-shadow: 0 0 25px  #CC3333;
 
 }
 
@@ -218,19 +284,49 @@ span{
     background-color: black;
     border-radius: 4rem;
     font-size: 1.6rem;
-    color: red;
+    color: #CC3333;
     letter-spacing: 0.3rem;
     font-weight: 600;
-    border: 2px solid red;
+    border: 2px solid #CC3333;
     transition: 0.3s ease;
     cursor: pointer;
 }
 
+.action-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#btn-download {
+    font-size: 2.1rem;
+    margin-top: 1rem;
+}
+
+.btn-search{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    padding: 0.5rem;
+}
+
+.btn-remove {
+    font-size: 1.2rem;
+    width: min-content;
+    padding: 1rem;
+}
+
+.btn-calendar {
+    font-size: 1.2rem;
+    width: min-content;
+}
+
 .btn:hover{
     transform: scale(1.03);
-    background-color: red;
+    background-color: #CC3333;
     color: black;
-    box-shadow: 0 0 25px red;
+    box-shadow: 0 0 25px #CC3333;
 }
 
 .typing-text{
@@ -245,7 +341,7 @@ span{
 
 .typing-text span::before{
     content: "software developer";
-    color: red;
+    color: #CC3333;
     animation: words 20s infinite;
 }
 
@@ -260,9 +356,21 @@ span{
     animation: cursor 0.6s infinite;
 }
 
+.search-bar{
+    color: white;
+    background-color: rgb(30, 30, 30);
+    font-size: 2rem;
+    border-radius: 4rem;
+    padding: 1rem 1.2rem;
+    width: 35rem;
+    margin: 3rem 1rem
+
+}
+
+
 @keyframes cursor{
     to{
-        border-left: 3px solid red;
+        border-left: 3px solid #CC3333;
     }
 }
 
@@ -298,7 +406,7 @@ span{
     }
 
     .home-content h1{
-        font-size: 5rem;
+        font-size: 4rem;
     }
 
     .home-img img{

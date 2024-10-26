@@ -20,7 +20,6 @@ def search(request):
      queried = False
      query = request.POST.get('q')
      exams = []
-     courses = Exam.objects.values_list('course_id', flat=True)
      if query:
           queried=True
           query = query.upper()
