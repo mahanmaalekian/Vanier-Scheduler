@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-4_yi+m_^^p!q8$_pja2ivp@^l+cyba!z#(%-5_*c%5w)k-6e44
 DEBUG = True
 
 ALLOWED_HOSTS = ['vanier-scheduler-production.up.railway.app', 'https://vanier-scheduler-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['vanier-scheduler-production.up.railway.app', 'https://vanier-scheduler-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://vanier-scheduler-production.up.railway.app']
 
 
 # Application definition
@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': os.environ.get('DB_PASSWORD_YO'),
+        'PASSWORD': os.environ['DB_PASSWORD_YO'],
         'HOST': 'autorack.proxy.rlwy.net',
         'PORT': '35265',
     }
