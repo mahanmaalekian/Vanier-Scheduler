@@ -1,11 +1,16 @@
-function removeFromCalendar(exam)
+function removeFromCalendar(id)
 {
+    const tableRow = document.getElementById(id);
+    id = id.replace('tr-', '');
     console.log("in remove");
-    const courseId = exam.split(" ")[0];
-    const sections = exam.split(" ")[1];
-    console.log(courseId);
-    console.log(sections);
-    const tableRow = document.getElementById(exam);
+    id = parseInt(id);
+
+    tableRow.remove();
+    let tableBody = document.getElementsByTagName("tbody")[0];
+    if (tableBody && tableBody.rows.length === 0) {
+        let body = document.getElementById('calendar-body');
+        body.innerHTML = `<p>Calendar is empty</p>`;
+    }
 
     fetch('/remove_from_calendar', {
         method: 'DELETE',
@@ -14,8 +19,8 @@ function removeFromCalendar(exam)
             'X-CSRFToken': getCookie('csrftoken'),  // Include the CSRF token
         },
         body: JSON.stringify({
-            courseId: courseId,
-            sections: sections
+            id: id
+
         })
     })
     .then(response => {
@@ -23,14 +28,6 @@ function removeFromCalendar(exam)
             return response.json().then(errorData => {
                 alert(errorData.error);
             })
-        }
-        else{
-            tableRow.remove();
-            let tableBody = document.getElementsByTagName("tbody")[0];
-            if (tableBody && tableBody.rows.length === 0) {
-                let body = document.getElementById('calendar-body');
-                body.innerHTML = `<p>Calendar is empty</p>`;
-            }
         }
     });
 }

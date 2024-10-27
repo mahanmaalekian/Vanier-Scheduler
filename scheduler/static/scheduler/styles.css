@@ -44,11 +44,11 @@ table {
     border-collapse: collapse;
     width: 100%;
     font-size: 1.2rem;
-    border: solid #CC3333;
 }
 
 .table-container {
-    max-height: 40rem;
+    border: solid #CC3333;
+    max-height: 26rem;
     height: auto;
     overflow-y: auto;
     margin: 2rem;

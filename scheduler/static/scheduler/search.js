@@ -1,11 +1,15 @@
-function addToCalendar(exam)
+
+function addToCalendar(id)
 {
+    
     console.log("inside add to calendar");
-    const button = document.getElementById(exam);
-    const courseId = exam.split(" ")[0];
-    const sections = exam.split(" ")[1];
-    console.log(courseId);
-    console.log(sections);
+    console.log('hhiandn');
+
+    const button = document.getElementById(id);
+    id = parseInt(id);
+
+    button.innerHTML = "Added";
+    button.disabled = true;
 
     fetch('/add_to_calendar', {
         method: 'PUT',
@@ -14,13 +18,14 @@ function addToCalendar(exam)
             'X-CSRFToken': getCookie('csrftoken'),  // Include the CSRF token here
         },
         body: JSON.stringify({
-            courseId: courseId,
-            sections: sections
+            id: id
         })
     })
     .then(response => {
         if(response.status != 200){
             return response.json().then(errorData => {
+                button.innerHTML="Add to Calendar";
+                button.disabled = false;
                 alert(errorData.error);
             })
         }

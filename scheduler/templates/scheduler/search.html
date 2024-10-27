@@ -35,16 +35,20 @@ Once you are done, go to the Calendar section and export your personalized sched
                 <tbody>
                 {% for exam in exams %}
                     <tr>
-                        <td>{{ exam.date }} </td>
+                        <td>{{ exam.date |date:"Y-m-d"}} </td>
                         <td>{{ exam.course_id }} </td>
                         <td>{{ exam.section_id }} </td>
                         <td>{{ exam.description }} </td>
                         <td>{{ exam.teacher}} </td>
-                        <td>{{ exam.start_time }} </td>
-                        <td>{{ exam.end_time}} </td>
+                        <td>{{ exam.start_time|time:"H:i:s" }} </td>
+                        <td>{{ exam.end_time|time:"H:i:s"}} </td>
                         <td>{{ exam.room_number}} </td>
                         <td>{{ exam.row|default_if_none:""}} </td>
-                        <td><button class="btn btn-calendar" id="{{exam.course_id}} {{exam.section_id}}" onclick="addToCalendar('{{exam.course_id}} {{exam.section_id}}')">Add To Calendar</button></td>
+                        {%if exam.id in session%}
+                        <td><button class="btn btn-calendar"  disabled id="{{exam.id}}">Added</button></td>
+                        {%else%}
+                        <td><button class="btn btn-calendar" id="{{exam.id}}" onclick="addToCalendar('{{exam.id}}')">Add To Calendar</button></td>
+                        {%endif%}
                     </tr>
                 {% endfor %}
             </tbody>

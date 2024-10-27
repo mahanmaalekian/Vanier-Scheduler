@@ -27,7 +27,7 @@
             </thead>
             <tbody>
             {% for exam in exams %}
-                <tr id="{{exam.course_id}} {{exam.section_id}}">
+                <tr id="tr-{{exam.id}}">
                     <td>{{ exam.date }}</td>
                     <td>{{ exam.course_id }}</td>
                     <td>{{ exam.section_id }}</td>
@@ -37,7 +37,7 @@
                     <td>{{ exam.end_time}}</td>
                     <td>{{ exam.room_number}}</td>
                     <td>{{ exam.row|default_if_none:""}}</td>
-                    <td class="action-buttons-container"><button class="btn btn-remove" id="{{exam.course_id}} {{exam.section_id}}" onclick="removeFromCalendar('{{exam.course_id}} {{exam.section_id}}')">Remove</button>
+                    <td class="action-buttons-container"><button class="btn btn-remove" id="td-{{exam.id}}" onclick="removeFromCalendar(`tr-{{exam.id}}`)">Remove</button>
                     <button class="btn" onclick="addToGoogleCalendar(this)"><i class="fa-brands fa-google"></i></button></td>
                 </tr>
             {% endfor %}

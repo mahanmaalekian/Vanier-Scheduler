@@ -9,19 +9,20 @@ class Exam(models.Model):
         max_length=8,
         validators=[MinLengthValidator(8), MaxLengthValidator(8)]
     )
-    section_id = models.CharField(max_length=10)
+    section_id = models.CharField(max_length=64)
     description = models.CharField(max_length=64)
     teacher = models.CharField(max_length=64)
     start_time = models.TimeField()
     end_time = models.TimeField()
-    room_number = models.CharField(max_length=10)
-    row=models.CharField(max_length=10, null=True, blank=True)
+    room_number = models.CharField(max_length=64)
+    row=models.CharField(max_length=64, null=True, blank=True)
 
     def __str__(self):
         return f"{self.description}: sections {self.section_id}"
         
     def to_dict(self):
         return {
+            "id": int(self.id),
             "date": str(self.date),
             "course_id": str(self.course_id),
             "section_id": str(self.section_id),
