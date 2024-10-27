@@ -27,7 +27,7 @@ load_dotenv()
 SECRET_KEY = 'django-insecure-4_yi+m_^^p!q8$_pja2ivp@^l+cyba!z#(%-5_*c%5w)k-6e44'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['vanier-scheduler-production.up.railway.app', 'https://vanier-scheduler-production.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ['https://vanier-scheduler-production.up.railway.app']
