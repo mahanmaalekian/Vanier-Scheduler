@@ -19,7 +19,7 @@
         <nav class="topnav" id="myTopnav">
         <div class="home-link">
         <a href="{%url 'index' %}" class="logo"><img src="{% static 'scheduler/vanier-logo.png' %}" alt="Vanier Logo"></a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon" onclick="navbarResize()">
           <i class="fa fa-bars"></i>
         </a>
         </div>
@@ -34,7 +34,7 @@
           </a> -->
         </nav>
         <script>
-          function myFunction() {
+          function navbarResize() {
             var x = document.getElementById("myTopnav");
             if (x.className === "topnav") {
               x.className += " responsive";

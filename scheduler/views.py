@@ -25,8 +25,8 @@ def search(request):
           query = query.upper()
           exams = Exam.objects.filter(Q(course_id__icontains=query) | Q(description__icontains=query))
           session_exam_ids = [int(exam_dict["id"]) for exam_dict in request.session.get("exams", [])]
-          exam_list = list(exams.values())
-          print(session_exam_ids)
+          #exam_list = list(exams.values())
+          #print(session_exam_ids)
           #make a list of all exams that are in the session:
           #in template if exam,ccourse and exam.section and time is in the list or maybe check id
           #then button is disabled
