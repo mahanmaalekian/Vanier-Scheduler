@@ -2,7 +2,7 @@ function removeFromCalendar(id)
 {
     const tableRow = document.getElementById(id);
     id = id.replace('tr-', '');
-    console.log("in remove");
+    //console.log("in remove");
     id = parseInt(id);
 
     tableRow.remove();
@@ -40,7 +40,7 @@ function getICSEventFromCalendar()
     let allEvents = '';
     // Loop through each row and log its contents or perform any desired actions
     rows.forEach(row => {
-        console.log(row.id); // Access the row's ID
+        //console.log(row.id); // Access the row's ID
         // You can access other cells (td) if needed
         const cells = row.querySelectorAll('td');
         const cellContents = [];
@@ -68,7 +68,7 @@ function getICSEventFromCalendar()
 function addToGoogleCalendar(button) {
     // Get the button that was clicked
     let googleURL = 'https://calendar.google.com/calendar/u/0/r/eventedit';
-    console.log(button)
+    //console.log(button)
     const tableRow = button.closest('tr'); // Find the closest <tr> ancestor
 
     // Get all <td> elements in this <tr>
@@ -88,7 +88,7 @@ function addToGoogleCalendar(button) {
     let endDate = getISODate(tdContents, 4, 'end');
 
     date = startDate + "Z" + "/" + endDate + "Z";
-    console.log(date)
+    //console.log(date)
 
     googleURL = googleURL + "&dates=" + date;
 
@@ -96,11 +96,11 @@ function addToGoogleCalendar(button) {
     details = encodeURIComponent(details);
 
     googleURL = googleURL + "&details=" + details;
-    console.log(googleURL);
+    //console.log(googleURL);
     window.open(googleURL, '_blank');
 
     // Log or process the contents
-    console.log(tdContents); // This will print an array of innerHTML for each <td>
+    //console.log(tdContents); // This will print an array of innerHTML for each <td>
 }
 
 function getISODate(cellContents, hourstoAdd, startOrEnd){
@@ -205,7 +205,7 @@ function createDownloadICSFile() {
   const events = getICSEventFromCalendar();
   icsBody = icsBody + events;
   icsBody = icsBody + 'END:VCALENDAR\n';
-  console.log(icsBody);
+  //console.log(icsBody);
   download('Exam Schedule.ics', icsBody);
 }
 
