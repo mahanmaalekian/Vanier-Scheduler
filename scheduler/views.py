@@ -16,6 +16,8 @@ def index(request):
      return render(request, "scheduler/index.html")
 
 def search(request):
+     if "exams" not in request.session:
+          request.session["exams"] = []
      queried = False
      query = request.POST.get('q')
      exams = []
@@ -41,11 +43,17 @@ def search(request):
      })
 
 def calendar(request):
+     if "exams" not in request.session:
+          request.session["exams"] = []
+
      return render(request, "scheduler/calendar.html", {
           "exams": request.session["exams"],
      })
 
 def contact(request):
+     if "exams" not in request.session:
+          request.session["exams"] = []
+
      return render(request, "scheduler/contact.html")
 
 # def get_calendar(request):
