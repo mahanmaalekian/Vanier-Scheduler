@@ -2,8 +2,8 @@
 function addToCalendar(id)
 {
     
-    console.log("inside add to calendar");
-    console.log('hhiandn');
+    //console.log("inside add to calendar");
+    //console.log('hhiandn');
 
     const button = document.getElementById(id);
     id = parseInt(id);
