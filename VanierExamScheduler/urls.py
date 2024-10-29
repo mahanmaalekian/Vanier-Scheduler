@@ -18,6 +18,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin-mahan-1383/', admin.site.urls),
     path('', include("scheduler.urls"))
 ]

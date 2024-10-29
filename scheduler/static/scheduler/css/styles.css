@@ -48,7 +48,7 @@ table {
 
 .table-container {
     border: solid #CC3333;
-    max-height: 26rem;
+    max-height: 50rem;
     height: auto;
     overflow-y: auto;
     margin: 2rem;
