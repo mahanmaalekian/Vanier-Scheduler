@@ -17,26 +17,22 @@
 
     </head>
     <body>
-        <nav class="topnav" id="myTopnav">
+        <nav class="topnav" id="vanierTopnav">
         <div class="home-link">
         <a href="{%url 'index' %}" class="logo"><img src="{% static 'scheduler/images/vanier-logo.png' %}" alt="Vanier Logo"></a>
         <a href="javascript:void(0);" class="icon" onclick="navbarResize()">
           <i class="fa fa-bars"></i>
         </a>
         </div>
-
           <a href="{%url 'index' %}" class="active">Home</a>
           <a href="{% url 'search' %}" class="active">Search</a>
           <a href="{% url 'calendar' %}" class="active">Calendar</a>
           <a href="{% url 'contact' %}" class="active">Contact</a>
           <a href="https://www.vaniercollege.qc.ca/final-exams" target="_blank" class="active">View Exams</a>
-          <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-          </a> -->
         </nav>
         <script>
           function navbarResize() {
-            var x = document.getElementById("myTopnav");
+            var x = document.getElementById("vanierTopnav");
             if (x.className === "topnav") {
               x.className += " responsive";
             } else {
@@ -46,7 +42,6 @@
           </script>
         {% block body %}
         {% endblock %}
-        
     </body>
 </html>
 
